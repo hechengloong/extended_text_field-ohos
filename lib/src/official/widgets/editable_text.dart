@@ -3012,7 +3012,8 @@ class _EditableTextState extends State<_EditableText>
         // Finalize editing, but don't give up focus because this keyboard
         // action does not imply the user is done inputting information.
         _finalizeEditing(action, shouldUnfocus: false);
-      case TextInputAction.removeFocus:
+      case TextInputAction.done:
+      case TextInputAction.none:
         if (defaultTargetPlatform == TargetPlatform.ohos) {
           _finalizeEditing(action, shouldUnfocus: true);
         }
@@ -3194,7 +3195,8 @@ class _EditableTextState extends State<_EditableText>
           case TextInputAction.route:
           case TextInputAction.emergencyCall:
           case TextInputAction.newline:
-          case TextInputAction.removeFocus:
+          case TextInputAction.done:
+          case TextInputAction.none:
             widget.focusNode.unfocus();
           case TextInputAction.next:
             widget.focusNode.nextFocus();
